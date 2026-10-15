@@ -1,0 +1,6 @@
+.git/
+.gitignore
+.assetsignore
+wrangler.jsonc
+wrangle.jsonc
+.playwright-mcp/

@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="sunset">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soham Mishra — mishrasoham.com</title>
+  <meta name="description" content="Soham Mishra — An engineer by education, a builder by curiosity. A quiet personal corner of the internet." />
+  <meta name="theme-color" content="#f5ede0" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23211d24'/%3E%3Ccircle cx='32' cy='34' r='16' fill='%23e07a3c'/%3E%3Cpath d='M10 46 Q32 40 54 46 L54 56 L10 56 Z' fill='%23332421'/%3E%3Cpath d='M28 56 L31 43 L33 43 L36 56 Z' fill='%23f5ede0'/%3E%3C/svg%3E" />
+
+  <style>
+        :root {
+      /* Warm California Sunset & Vintage Paper Palette */
+      --bg-paper: #f4ead8;
+      --bg-paper-elevated: #efe1c9;
+      --bg-card: rgba(249, 241, 228, 0.78);
+      --ink-primary: #241c19;
+      --ink-secondary: #53433b;
+      --ink-muted: #7d685c;
+      --border-ink: #382b25;
+      --border-subtle: rgba(56, 43, 37, 0.22);
+
+      --accent-rust: #b85338;
+      --accent-amber: #dc853d;
+      --accent-gold: #e8aa54;
+      --accent-sage: #4c5847;
+
+      /* SVG Scene Dynamic Variables */
+      --sky-top: #282338;
+      --sky-upper: #51384d;
+      --sky-mid: #944b46;
+      --sky-low: #d47a43;
+      --sky-horizon: #f3be69;
+      --sun-core: #ffdf85;
+      --sun-mid: #f29748;
+      --sun-low: #cf563c;
+      --star-opacity: 0.75;
+      --headlight-opacity: 0.44;
+      --neon-glow: 0.78;
+      --asphalt-base: #2d2424;
+      --asphalt-mid: #3a2d2b;
+      --desert-far: #573335;
+      --desert-mid: #744136;
+      --desert-near: #8f533b;
+      --desert-floor: #b86f46;
+
+      --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: "SFMono-Regular", ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Liberation Mono", Menlo, Monaco, Consolas, monospace;
+
+      --shadow-frame: 6px 6px 0px rgba(36, 28, 25, 0.14);
+      /* Compatibility Aliases for index.html */
+      --bg-cream: var(--bg-paper);
+      --bg-warm: var(--bg-paper-elevated);
+      --ink-deep: var(--ink-primary);
+      --ink-body: var(--ink-secondary);
+      --border-line: var(--border-subtle);
+      --border-strong: var(--border-subtle);
+      --shadow-soft: 0 18px 40px -18px rgba(0, 0, 0, 0.28);
+
+    }
+
+    [data-theme="midnight"] {
+      --bg-paper: #191619;
+      --bg-paper-elevated: #221d21;
+      --bg-card: rgba(36, 30, 34, 0.85);
+      --ink-primary: #f0e4d2;
+      --ink-secondary: #c7b49e;
+      --ink-muted: #917f6e;
+      --border-ink: #cbb59c;
+      --border-subtle: rgba(203, 181, 156, 0.2);
+
+      --accent-rust: #e07655;
+      --accent-amber: #eba052;
+      --accent-gold: #f4c16d;
+      --accent-sage: #8da183;
+
+      --sky-top: #0f0d19;
+      --sky-upper: #1c182c;
+      --sky-mid: #34243b;
+      --sky-low: #63353e;
+      --sky-horizon: #a85842;
+      --sun-core: #f6b969;
+      --sun-mid: #d66d42;
+      --sun-low: #8f3938;
+      --star-opacity: 1;
+      --headlight-opacity: 0.9;
+      --neon-glow: 1;
+      --asphalt-base: #1c1719;
+      --asphalt-mid: #251e21;
+      --desert-far: #2d1d26;
+      --desert-mid: #3d2429;
+      --desert-near: #4f2e2b;
+      --desert-floor: #663c31;
+
+      --shadow-frame: 6px 6px 0px rgba(0, 0, 0, 0.42);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+        body {
+      background-color: var(--bg-paper);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.45s ease, color 0.45s ease;
+      background-image:
+        radial-gradient(circle at 18% 12%, rgba(220, 133, 61, 0.11), transparent 45%),
+        radial-gradient(circle at 82% 78%, rgba(184, 83, 56, 0.09), transparent 50%);
+    }
+
+    /* Subtle paper grain overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .page-shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: space-between;
+    }
+
+    /* Extreme Top-Right Floating Atmosphere Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.5rem;
+      z-index: 100;
+      appearance: none;
+      background: var(--bg-card);
+      color: var(--ink-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform 0.15s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent-rust);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+    }
+
+    .theme-toggle:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.72rem;
+        padding: 0.3rem 0.7rem;
+      }
+    }
+
+
+    /* HERO SECTION */
+    .hero {
+      min-height: calc(86vh - 3rem);
+      display: grid;
+      grid-template-columns: 1.05fr 1.15fr;
+      gap: 3.5rem;
+      align-items: center;
+      padding: 1.5rem 0 3.5rem;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-rust);
+      margin-bottom: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 1.5rem;
+      height: 1px;
+      background-color: var(--accent-rust);
+      display: inline-block;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink-primary);
+      margin-bottom: 1.15rem;
+    }
+
+    .lead-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.22rem, 2.1vw, 1.48rem);
+      line-height: 1.42;
+      color: var(--ink-body);
+      margin-bottom: 1.15rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--accent-amber);
+    }
+
+    .bio-text {
+      font-size: 1.03rem;
+      color: var(--ink-body);
+      max-width: 46ch;
+      margin-bottom: 2rem;
+    }
+
+        /* INTERACTIVE HOTEL CALIFORNIA VINYL WIDGET */
+    .music-box {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0.85rem 1.15rem 0.85rem 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.95rem;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      color: var(--ink-primary);
+      box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+      max-width: 100%;
+      user-select: none;
+    }
+
+    .music-box:hover {
+      background: var(--bg-paper-elevated);
+      border-color: var(--accent-rust);
+      transform: translateY(-1px);
+      box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .music-box:active {
+      transform: translateY(0);
+    }
+
+    .music-box:focus-visible {
+      outline: 2px dashed var(--accent-rust);
+      outline-offset: 3px;
+    }
+
+    .music-box.is-playing {
+      border-color: var(--accent-rust);
+      background: var(--bg-paper-elevated);
+    }
+
+    .vinyl-wrap {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vinyl-disc {
+      width: 44px;
+      height: 44px;
+      animation: spinRecord 4.5s linear infinite;
+      animation-play-state: paused;
+      transform-origin: 50% 50%;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.22));
+    }
+
+    .music-box.is-playing .vinyl-disc {
+      animation-play-state: running;
+    }
+
+    @keyframes spinRecord {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .music-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+    }
+
+    .music-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent-amber);
+      display: inline-block;
+      transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .music-box.is-playing .status-dot {
+      background-color: var(--accent-rust);
+      box-shadow: 0 0 8px rgba(184, 75, 41, 0.7);
+    }
+
+    .music-track {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      color: var(--ink-deep);
+      font-weight: 500;
+    }
+
+    /* Artwork Window Container */
+    .artwork-stage,
+    .doodle-stage {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .window-frame,
+    .doodle-window {
+      background: var(--bg-paper-elevated);
+      border: 2px solid var(--border-ink);
+      border-radius: 14px;
+      box-shadow: var(--shadow-frame);
+      overflow: hidden;
+      transition: background-color 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+    }
+
+    .window-titlebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0.9rem;
+      border-bottom: 1.5px solid var(--border-ink);
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      color: var(--ink-secondary);
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-dots span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 1.2px solid var(--border-ink);
+      display: inline-block;
+    }
+
+    .window-dots span:nth-child(1) { background: var(--accent-rust); }
+    .window-dots span:nth-child(2) { background: var(--accent-gold); }
+    .window-dots span:nth-child(3) { background: var(--accent-sage); }
+
+    .doodle-canvas,
+    .doodle-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: var(--bg-paper-elevated);
+    }
+
+    .window-caption {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.95rem;
+      border-top: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      color: var(--ink-muted);
+      background: var(--bg-card);
+    }
+
+    .caption-lyric {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.76rem;
+      color: var(--ink-secondary);
+      opacity: 0.68;
+      letter-spacing: 0.01em;
+    }
+
+    .caption-hint {
+      color: var(--accent-rust);
+      opacity: 0.92;
+    }
+
+    /* Interactive SVG Nodes (#retroComputer, #mirageSign, #desertConvertible) */
+    .interactive-svg-node {
+      cursor: pointer;
+      outline: none;
+    }
+
+    .interactive-svg-node:focus-visible {
+      outline: none;
+    }
+
+    .interactive-svg-node:focus-visible .focus-halo {
+      opacity: 1;
+    }
+
+    .focus-halo {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    /* Computer Terminal Hover & Key-Tap Effects */
+    #retroComputer .crt-glass {
+      transition: fill 0.3s ease, filter 0.3s ease;
+    }
+
+    #retroComputer:hover .crt-glass,
+    #retroComputer:focus-visible .crt-glass {
+      fill: #263327;
+      filter: drop-shadow(0 0 8px rgba(245, 179, 73, 0.45));
+    }
+
+    #retroComputer:hover .power-led {
+      fill: #9ff7d4;
+      filter: drop-shadow(0 0 4px #7bcfb0);
+    }
+
+    #retroComputer .keyboard-group {
+      transition: transform 0.12s ease;
+    }
+
+    #retroComputer.is-tapping .keyboard-group {
+      transform: translateY(1.8px);
+    }
+
+    /* Roadside Mirage Sign Hover & Flicker Effects */
+    #mirageSign .sign-cabinet-border,
+    #mirageSign .sign-starburst,
+    #mirageSign .sign-main-text {
+      transition: filter 0.25s ease, opacity 0.25s ease;
+    }
+
+    #mirageSign:hover .sign-starburst,
+    #mirageSign:focus-visible .sign-starburst {
+      filter: drop-shadow(0 0 9px #ffdf85);
+    }
+
+    #mirageSign:hover .sign-main-text,
+    #mirageSign:focus-visible .sign-main-text,
+    #mirageSign:hover .sign-cabinet-border,
+    #mirageSign:focus-visible .sign-cabinet-border {
+      filter: drop-shadow(0 0 7px #ffcf70);
+    }
+
+    #mirageSign.is-switching .sign-main-text {
+      animation: sign-relight 0.35s ease;
+    }
+
+    /* Highway Convertible Cruise & Suspension Animations */
+    .convertible-track {
+      animation: highway-cruise 22s cubic-bezier(0.32, 0.04, 0.32, 0.96) infinite;
+      will-change: transform, opacity;
+      cursor: pointer;
+    }
+
+    .convertible-body {
+      animation: suspension-hum 0.65s ease-in-out infinite alternate;
+    }
+
+    .headlight-cones {
+      opacity: var(--headlight-opacity);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      transform-origin: 0px -24px;
+    }
+
+    .convertible-track:hover .headlight-cones {
+      opacity: 0.96;
+      transform: scaleY(1.22) scaleX(1.1);
+    }
+
+    .convertible-track:hover .taillight-glow {
+      filter: drop-shadow(0 0 6px #ff3b30);
+    }
+
+    .exhaust-puff-1 {
+      animation: exhaust-drift 1.1s ease-out infinite;
+      transform-origin: -16px 10px;
+    }
+
+    .exhaust-puff-2 {
+      animation: exhaust-drift 1.1s ease-out 0.55s infinite;
+      transform-origin: 16px 10px;
+    }
+
+    /* Multi-waypoint S-Curve Highway Cruise:
+       Follows the exact outbound lane from the foreground sill (y=540, scale=1.18)
+       through the left bend (x=338, y=433, scale=0.68), up the diagonal straightaway
+       (x=424, y=381, scale=0.45), around the upper right bend (x=513, y=339, scale=0.25),
+       and vanishing into the canyon pass at the horizon (x=430.5, y=276, scale=0.04). */
+    @keyframes highway-cruise {
+      0% {
+        transform: translate(556px, 540px) rotate(-25deg) scale(1.18);
+        opacity: 0;
+      }
+      5% {
+        transform: translate(516px, 520px) rotate(-26deg) scale(1.06);
+        opacity: 1;
+      }
+      14% {
+        transform: translate(432px, 488px) rotate(-24deg) scale(0.90);
+        opacity: 1;
+      }
+      23% {
+        transform: translate(362px, 458px) rotate(-14deg) scale(0.77);
+        opacity: 1;
+      }
+      32% {
+        transform: translate(338px, 433px) rotate(6deg) scale(0.68);
+        opacity: 1;
+      }
+      43% {
+        transform: translate(372px, 405px) rotate(26deg) scale(0.56);
+        opacity: 1;
+      }
+      54% {
+        transform: translate(424px, 381px) rotate(28deg) scale(0.45);
+        opacity: 1;
+      }
+      65% {
+        transform: translate(480px, 358px) rotate(18deg) scale(0.34);
+        opacity: 1;
+      }
+      75% {
+        transform: translate(513px, 339px) rotate(-6deg) scale(0.25);
+        opacity: 1;
+      }
+      85% {
+        transform: translate(490px, 312px) rotate(-22deg) scale(0.16);
+        opacity: 1;
+      }
+      93% {
+        transform: translate(456px, 291px) rotate(-20deg) scale(0.09);
+        opacity: 0.85;
+      }
+      98% {
+        transform: translate(430.5px, 276px) rotate(-14deg) scale(0.04);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(430.5px, 276px) rotate(-14deg) scale(0.04);
+        opacity: 0;
+      }
+    }
+
+    @keyframes suspension-hum {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-1.1px); }
+    }
+
+    @keyframes exhaust-drift {
+      0% {
+        opacity: 0.7;
+        transform: translateY(0px) scale(0.75);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(12px) scale(1.65);
+      }
+    }
+
+    @keyframes sign-relight {
+      0% { opacity: 0.15; }
+      35% { opacity: 1; }
+      60% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    /* SVG Subtle Ambient Animations */
+    .twinkle-1 {
+      animation: twinkle 3.6s ease-in-out infinite;
+    }
+    .twinkle-2 {
+      animation: twinkle 4.8s ease-in-out 1.4s infinite;
+    }
+    .twinkle-3 {
+      animation: twinkle 5.2s ease-in-out 2.6s infinite;
+    }
+    .cloud-drift {
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    .cloud-drift-slow {
+      animation: drift 26s ease-in-out infinite alternate-reverse;
+    }
+    .steam-1 {
+      animation: steam-rise 4.2s ease-in-out infinite;
+    }
+    .steam-2 {
+      animation: steam-rise 4.2s ease-in-out 1.8s infinite;
+    }
+    .crt-cursor {
+      animation: blink-cursor 1.15s steps(2, start) infinite;
+    }
+    .neon-sign-glow {
+      animation: neon-flicker 7s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.65; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.12); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.25; transform: scale(0.92); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+
+    @keyframes drift {
+      0% { transform: translateX(-7px); }
+      100% { transform: translateX(7px); }
+    }
+
+    @keyframes steam-rise {
+      0% { opacity: 0; transform: translateY(3px); }
+      45% { opacity: 0.65; }
+      100% { opacity: 0; transform: translateY(-9px); }
+    }
+
+    @keyframes blink-cursor {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    @keyframes neon-flicker {
+      0%, 100% { opacity: var(--neon-glow); }
+      48% { opacity: var(--neon-glow); }
+      50% { opacity: 0.45; }
+      52% { opacity: var(--neon-glow); }
+      78% { opacity: 0.85; }
+    }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+        /* SECONDARY SECTION */
+    .secondary-section {
+      border-top: 1.5px dashed var(--border-subtle);
+      padding: 3.25rem 0 2.75rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .about-note p {
+      color: var(--ink-secondary);
+      font-size: 0.98rem;
+      max-width: 54ch;
+    }
+
+    .about-note p + p {
+      margin-top: 0.75rem;
+    }
+
+    .signposts {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.35rem 1.5rem;
+      transition: background-color 0.45s ease, border-color 0.45s ease;
+    }
+
+    .signposts-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-rust);
+      margin-bottom: 0.85rem;
+    }
+
+    .signpost-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .signpost-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px dotted var(--border-subtle);
+    }
+
+    .signpost-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .signpost-name {
+      font-family: var(--font-display);
+      font-size: 1.02rem;
+      color: var(--ink-primary);
+    }
+
+    .signpost-status {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      background: var(--bg-paper);
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      white-space: nowrap;
+      font-style: normal;
+    }
+
+        /* FOOTER */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      transition: border-color 0.45s ease, color 0.45s ease;
+    }
+
+    .footer-domain {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--ink-secondary);
+    }
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 880px) {
+      .page-shell {
+        padding: 2.25rem 1.35rem 2rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        min-height: auto;
+        padding: 0.5rem 0 2.5rem;
+      }
+
+      .secondary-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2.5rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.35rem;
+      }
+
+      .lead-quote {
+        font-size: 1.15rem;
+      }
+
+      .music-box {
+        width: 100%;
+      }
+    }
+
+    /* ACCESSIBILITY: REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      .convertible-track {
+        animation: none !important;
+        transform: translate(354px, 418px) rotate(18deg) scale(0.62) !important;
+        opacity: 1 !important;
+      }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <!-- Extreme Top-Right Floating Theme Toggle -->
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch atmosphere between dusk sunset and midnight highway">
+      <span id="themeIcon" aria-hidden="true">☀</span>
+      <span id="themeLabel">Dusk Sunset</span>
+    </button>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero" aria-label="Introduction">
+        <div class="hero-copy">
+          <span class="eyebrow">hello, traveler</span>
+          <h1>Soham Mishra</h1>
+          <p class="lead-quote">“An engineer by education, a builder by curiosity.”</p>
+          <p class="bio-text">
+            I enjoy building thoughtful software, tinkering with AI, and exploring interesting ideas down late-night rabbit holes. Welcome to my small digital hideaway while the rest of this place takes shape.
+          </p>
+
+          <!-- Subtle Click-to-Play Hotel California Vinyl Card -->
+          <button
+            type="button"
+            class="music-box"
+            id="vinylPlayerBtn"
+            aria-pressed="false"
+            aria-label="Play or pause Hotel California by Eagles"
+            title="Click to play or pause"
+          >
+            <div class="vinyl-wrap" aria-hidden="true">
+              <svg class="vinyl-disc" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer Vinyl Disc -->
+                <circle cx="32" cy="32" r="30" fill="#181518" stroke="#362e33" stroke-width="1.5" />
+                <!-- Asymmetric Light Sheen Wedges (makes spinning clearly visible) -->
+                <path d="M32 32 L12 10 A30 30 0 0 1 26 3 Z" fill="rgba(255,235,205,0.13)" />
+                <path d="M32 32 L52 54 A30 30 0 0 1 38 61 Z" fill="rgba(255,235,205,0.13)" />
+                <!-- Vinyl Grooves -->
+                <circle cx="32" cy="32" r="24" fill="none" stroke="#2c2629" stroke-width="0.9" stroke-dasharray="14 6" />
+                <circle cx="32" cy="32" r="19" fill="none" stroke="#2c2629" stroke-width="0.9" stroke-dasharray="10 5" />
+                <circle cx="32" cy="32" r="15" fill="none" stroke="#2c2629" stroke-width="0.8" />
+                <!-- Warm Sunset Center Label -->
+                <circle cx="32" cy="32" r="10.5" fill="#d97834" />
+                <path d="M21.5 32 A10.5 10.5 0 0 1 42.5 32 Z" fill="#b84b29" />
+                <circle cx="35" cy="29" r="1.6" fill="#f5ede0" opacity="0.85" />
+                <!-- Center Spindle Hole -->
+                <circle cx="32" cy="32" r="2.8" fill="#f5ede0" stroke="#181518" stroke-width="1" />
+              </svg>
+            </div>
+
+            <div class="music-meta">
+              <span class="music-label">
+                <span class="status-dot"></span>
+                <span id="musicStatusText">Currently listening to</span>
+              </span>
+              <span class="music-track">Hotel California — Eagles</span>
+            </div>
+          </button>
+
+          <audio
+            id="hotelCaliforniaAudio"
+            src="Eagles - Hotel California (Live 1977) (Official Video) [HD].mp3"
+            preload="metadata"
+          ></audio>
+        </div>
+
+                <!-- Original Hand-Drawn Inline SVG Doodle -->
+                <div class="artwork-stage">
+                  <div class="window-frame">
+                    <div class="window-titlebar">
+                      <div class="window-dots" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                      </div>
+                      <span>HWY 76</span>
+                    </div>
+
+                    <svg
+                      class="doodle-canvas"
+                      viewBox="0 0 860 600"
+                      xmlns="http://www.w3.org/2000/svg"
+                      role="img"
+                      aria-labelledby="doodleTitle doodleDesc"
+                    >
+                      <title id="doodleTitle">Hand-drawn desert highway sunset seen from a vintage computer desk</title>
+                      <desc id="doodleDesc">An original ink-and-sunset illustration showing a compact retro computer and steaming coffee mug on a wooden sill looking out onto a winding S-curve desert highway, telegraph poles, a cruising 1970s California roadster, fan palms, an interactive Mirage motel sign, and a striped sun setting between mesas.</desc>
+
+                      <defs>
+                        <!-- Subtle Hand-Drawn Ink Wobble Filter -->
+                        <filter id="ink-drawn" x="-3%" y="-3%" width="106%" height="106%">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="11" result="noise" />
+                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.45" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+
+                        <!-- Soft Atmospheric Glow -->
+                        <filter id="warm-glow" x="-30%" y="-30%" width="160%" height="160%">
+                          <feGaussianBlur stdDeviation="7" result="blur" />
+                          <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+
+                        <!-- Sky & Horizon Gradients -->
+                        <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stop-color="var(--sky-top)" />
+                          <stop offset="28%" stop-color="var(--sky-upper)" />
+                          <stop offset="56%" stop-color="var(--sky-mid)" />
+                          <stop offset="80%" stop-color="var(--sky-low)" />
+                          <stop offset="100%" stop-color="var(--sky-horizon)" />
+                        </linearGradient>
+
+                        <linearGradient id="sunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stop-color="var(--sun-core)" />
+                          <stop offset="55%" stop-color="var(--sun-mid)" />
+                          <stop offset="100%" stop-color="var(--sun-low)" />
+                        </linearGradient>
+
+                        <radialGradient id="horizonHaze" cx="50%" cy="100%" r="60%">
+                          <stop offset="0%" stop-color="#ffdfa0" stop-opacity="0.55" />
+                          <stop offset="55%" stop-color="#e88348" stop-opacity="0.2" />
+                          <stop offset="100%" stop-color="#e88348" stop-opacity="0" />
+                        </radialGradient>
+
+                        <linearGradient id="desertGround" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stop-color="var(--desert-mid)" />
+                          <stop offset="40%" stop-color="var(--desert-near)" />
+                          <stop offset="100%" stop-color="var(--desert-floor)" />
+                        </linearGradient>
+
+                        <linearGradient id="roadAsphalt" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stop-color="#4a3735" />
+                          <stop offset="35%" stop-color="var(--asphalt-mid)" />
+                          <stop offset="100%" stop-color="var(--asphalt-base)" />
+                        </linearGradient>
+
+                        <linearGradient id="roadShoulder" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#9e5a3c" />
+                          <stop offset="50%" stop-color="#7c4432" />
+                          <stop offset="100%" stop-color="#5d3228" />
+                        </linearGradient>
+
+                        <!-- Forward-Projecting Warm Headlight Cone Gradient (Centered at 0,0 Roadster) -->
+                        <linearGradient id="headlightBeam" x1="0%" y1="100%" x2="0%" y2="0%">
+                          <stop offset="0%" stop-color="#fff0b8" stop-opacity="0.85" />
+                          <stop offset="45%" stop-color="#f7b955" stop-opacity="0.32" />
+                          <stop offset="100%" stop-color="#f5a64c" stop-opacity="0" />
+                        </linearGradient>
+
+                        <!-- Roadster Cherry-Rust Body Gradient -->
+                        <linearGradient id="roadsterBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#d95338" />
+                          <stop offset="55%" stop-color="#b83b2a" />
+                          <stop offset="100%" stop-color="#87261c" />
+                        </linearGradient>
+
+                        <!-- Clip Path for the Striped Retro Sun -->
+                        <clipPath id="sunStripes">
+                          <rect x="330" y="135" width="200" height="72" />
+                          <rect x="330" y="211" width="200" height="14" />
+                          <rect x="330" y="229" width="200" height="11" />
+                          <rect x="330" y="244" width="200" height="9" />
+                          <rect x="330" y="257" width="200" height="7" />
+                          <rect x="330" y="268" width="200" height="6" />
+                        </clipPath>
+
+                        <!-- Outer Arch Illustration Clip -->
+                        <clipPath id="sceneClip">
+                          <rect x="24" y="20" width="812" height="556" rx="10" />
+                        </clipPath>
+                      </defs>
+
+                      <g clip-path="url(#sceneClip)">
+                        <!-- ================= 1. SKY & CELESTIAL LAYER ================= -->
+                        <rect x="24" y="20" width="812" height="265" fill="url(#skyGrad)" />
+                        <ellipse cx="430" cy="280" rx="370" ry="150" fill="url(#horizonHaze)" />
+
+                        <!-- Hand-drawn atmospheric contour arcs in upper sky -->
+                        <g stroke="#f6d8ac" stroke-opacity="0.14" stroke-width="1" fill="none" stroke-dasharray="6 10">
+                          <ellipse cx="430" cy="278" rx="145" ry="135" />
+                          <ellipse cx="430" cy="278" rx="235" ry="195" />
+                          <ellipse cx="430" cy="278" rx="340" ry="245" />
+                        </g>
+
+                        <!-- Stars & Constellations -->
+                        <g style="opacity: var(--star-opacity); transition: opacity 0.45s ease;">
+                          <!-- 4-Point Hand-Inked Spark Stars -->
+                          <g class="twinkle-1" fill="#fff2d6">
+                            <path d="M 118 56 Q 118 66 108 66 Q 118 66 118 76 Q 118 66 128 66 Q 118 66 118 56 Z" />
+                            <path d="M 672 52 Q 672 60 664 60 Q 672 60 672 68 Q 672 60 680 60 Q 672 60 672 52 Z" />
+                            <path d="M 305 62 Q 305 68 299 68 Q 305 68 305 74 Q 305 68 311 68 Q 305 68 305 62 Z" />
+                          </g>
+                          <g class="twinkle-2" fill="#ffe4b5">
+                            <path d="M 528 48 Q 528 56 520 56 Q 528 56 528 64 Q 528 56 536 56 Q 528 56 528 48 Z" />
+                            <path d="M 210 96 Q 210 102 204 102 Q 210 102 210 108 Q 210 102 216 102 Q 210 102 210 96 Z" />
+                            <path d="M 768 92 Q 768 98 762 98 Q 768 98 768 104 Q 768 98 774 98 Q 768 98 768 92 Z" />
+                          </g>
+                          <g class="twinkle-3" fill="#fff6e0">
+                            <circle cx="84" cy="98" r="1.6" />
+                            <circle cx="156" cy="48" r="1.4" />
+                            <circle cx="254" cy="54" r="1.8" />
+                            <circle cx="384" cy="44" r="1.5" />
+                            <circle cx="468" cy="66" r="1.3" />
+                            <circle cx="595" cy="76" r="1.7" />
+                            <circle cx="728" cy="46" r="1.5" />
+                            <circle cx="792" cy="64" r="1.4" />
+                            <circle cx="628" cy="112" r="1.3" />
+                          </g>
+                          <!-- Subtle Constellation Line & Shooting Star -->
+                          <path d="M 254 54 L 305 68 L 342 52 L 384 44" stroke="#ffe4b5" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.45" fill="none" />
+                          <circle cx="342" cy="52" r="1.5" fill="#ffe4b5" />
+                          <path d="M 590 42 L 548 64" stroke="#fff2d6" stroke-width="1.1" stroke-linecap="round" opacity="0.6" />
+                          <circle cx="548" cy="64" r="1.6" fill="#fff2d6" />
+                        </g>
+
+                        <!-- Hand-Drawn Crescent Moon -->
+                        <g filter="url(#ink-drawn)" transform="translate(168, 66)">
+                          <path d="M 18 0 A 22 22 0 1 0 38 32 A 17 17 0 1 1 18 0 Z" fill="#fff0c7" stroke="#241c19" stroke-width="1.5" />
+                          <path d="M 11 16 C 13 18, 15 19, 17 18 M 14 25 C 17 26, 20 26, 22 24" stroke="#b88a58" stroke-width="1" fill="none" stroke-linecap="round" />
+                        </g>
+
+                        <!-- Striped Setting Sun at the Highway Vanishing Point -->
+                        <g filter="url(#warm-glow)">
+                          <circle cx="430" cy="218" r="68" fill="url(#sunGrad)" clip-path="url(#sunStripes)" />
+                        </g>
+                        <circle cx="430" cy="218" r="68.5" fill="none" stroke="#241c19" stroke-width="1.4" stroke-dasharray="18 6 4 6" opacity="0.45" filter="url(#ink-drawn)" />
+
+                        <!-- Wispy Desert Sunset Clouds -->
+                        <g class="cloud-drift" filter="url(#ink-drawn)">
+                          <path d="M 105 168 H 248 C 260 168, 264 156, 250 153 C 245 140, 222 138, 212 146 C 198 132, 165 134, 155 149 C 138 147, 125 154, 122 160 C 106 160, 98 168, 105 168 Z" fill="#6d3a46" stroke="#241c19" stroke-width="1.5" />
+                          <path d="M 118 166 H 242" stroke="#f7b36b" stroke-width="2" stroke-linecap="round" />
+                        </g>
+
+                        <g class="cloud-drift-slow" filter="url(#ink-drawn)">
+                          <path d="M 575 152 H 736 C 748 152, 752 141, 738 138 C 730 125, 706 124, 695 133 C 680 118, 646 120, 634 136 C 616 134, 602 142, 596 146 C 580 146, 568 152, 575 152 Z" fill="#6d3a46" stroke="#241c19" stroke-width="1.5" />
+                          <path d="M 588 150 H 726" stroke="#f7b36b" stroke-width="2" stroke-linecap="round" />
+                        </g>
+
+                        <!-- Distant Flock of Birds -->
+                        <g stroke="#241c19" stroke-width="1.4" fill="none" stroke-linecap="round" filter="url(#ink-drawn)">
+                          <path d="M 342 158 Q 346 153 350 157 Q 354 153 358 158" />
+                          <path d="M 362 150 Q 365 146 368 149 Q 371 146 374 150" />
+                          <path d="M 353 165 Q 356 162 359 164 Q 362 162 365 165" />
+                        </g>
+
+                        <!-- ================= 2. DISTANT MESAS & CANYON PASS ================= -->
+                        <g filter="url(#ink-drawn)">
+                          <!-- Far Horizon Mountain Range -->
+                          <path d="M 24 276 L 78 242 L 132 242 L 165 262 L 222 224 L 296 224 L 334 256 L 385 260 L 424 276 L 436 276 L 478 256 L 526 252 L 568 218 L 648 218 L 684 252 L 735 236 L 792 236 L 836 272 L 836 282 L 24 282 Z" fill="var(--desert-far)" stroke="#241c19" stroke-width="1.8" stroke-linejoin="round" />
+
+                          <!-- Rim-light & Vertical Cliff Striations on Mesas -->
+                          <path d="M 223 226 H 294 M 570 220 H 646 M 736 238 H 790" stroke="#f3a85b" stroke-width="2" stroke-linecap="round" />
+                          <g stroke="#241c19" stroke-width="1.1" opacity="0.65">
+                            <path d="M 236 226 V 256 M 248 226 V 264 M 264 226 V 252 M 280 226 V 260" />
+                            <path d="M 584 220 V 254 M 598 220 V 262 M 615 220 V 248 M 630 220 V 258" />
+                            <path d="M 748 238 V 264 M 764 238 V 268 M 778 238 V 260" />
+                            <path d="M 92 244 V 268 M 108 244 V 265" />
+                          </g>
+
+                          <!-- Midground foothills framing the canyon pass at (430, 275) -->
+                          <path d="M 24 280 Q 140 264 255 274 Q 350 282 426 276 L 24 290 Z" fill="var(--desert-mid)" stroke="#241c19" stroke-width="1.5" />
+                          <path d="M 434 276 Q 530 282 640 268 Q 745 258 836 278 L 836 290 L 434 280 Z" fill="var(--desert-mid)" stroke="#241c19" stroke-width="1.5" />
+                        </g>
+
+                        <!-- ================= 3. DESERT VALLEY FLOOR ================= -->
+                        <rect x="24" y="275" width="812" height="265" fill="url(#desertGround)" />
+
+                        <!-- Sweeping Desert Topographic Contour Lines & Arroyos -->
+                        <g filter="url(#ink-drawn)" fill="none" stroke="#241c19" stroke-opacity="0.32" stroke-width="1.2">
+                          <path d="M 24 312 Q 185 298 345 316 Q 415 322 475 312" />
+                          <path d="M 535 308 Q 675 296 836 318" />
+                          <path d="M 24 368 Q 140 352 260 378" />
+                          <path d="M 565 362 Q 700 348 836 376" />
+                          <path d="M 24 446 Q 120 434 235 456" />
+                          <path d="M 615 438 Q 735 426 836 452" />
+                        </g>
+
+                        <!-- Warm Sand Dune Highlights -->
+                        <g filter="url(#ink-drawn)" fill="#d98a54" fill-opacity="0.22">
+                          <path d="M 24 312 Q 175 298 330 315 Q 210 328 24 326 Z" />
+                          <path d="M 545 358 Q 705 344 836 374 Q 710 388 545 358 Z" />
+                        </g>
+
+                        <!-- ================= 4. THE WINDING DESERT HIGHWAY (HERO FOCUS) ================= -->
+                        <g filter="url(#ink-drawn)">
+                          <!-- 4A. Raised Gravel Roadbed / Embankment Shoulder -->
+                          <path
+                            d="M 426 275
+                               C 450 292, 492 310, 478 335
+                               C 460 365, 285 378, 250 432
+                               C 220 476, 285 508, 315 538
+                               L 695 538
+                               C 595 495, 405 475, 396 435
+                               C 386 392, 538 375, 546 342
+                               C 554 312, 474 292, 434 275 Z"
+                            fill="url(#roadShoulder)"
+                            stroke="#241c19"
+                            stroke-width="1.8"
+                            stroke-linejoin="round"
+                          />
+
+                          <!-- Hand-drawn Ink Hatching Along the Gravel Embankment Slopes -->
+                          <g stroke="#241c19" stroke-width="1.15" stroke-linecap="round" opacity="0.65">
+                            <!-- Left Outer Curve Embankment Hatching -->
+                            <path d="M 358 386 L 344 391 M 332 393 L 317 398 M 308 402 L 292 408 M 286 413 L 269 420 M 272 426 L 254 433 M 266 440 L 248 446 M 268 455 L 250 462 M 278 470 L 260 478 M 295 486 L 278 494 M 316 503 L 298 511 M 338 520 L 320 528" />
+                            <!-- Right Upper Curve & Foreground Embankment Hatching -->
+                            <path d="M 518 318 L 529 321 M 526 328 L 538 331 M 528 338 L 542 342 M 522 350 L 536 354 M 508 361 L 522 366" />
+                            <path d="M 382 448 L 398 445 M 398 462 L 416 458 M 426 476 L 446 472 M 468 490 L 490 486 M 522 504 L 546 499 M 580 518 L 606 513" />
+                          </g>
+
+                          <!-- 4B. Main Sweeping S-Curve Asphalt Surface -->
+                          <path
+                            d="M 428 275
+                               C 455 292, 500 310, 488 335
+                               C 472 365, 305 380, 275 430
+                               C 250 470, 320 505, 355 538
+                               L 650 538
+                               C 565 495, 385 475, 375 435
+                               C 365 392, 520 375, 528 342
+                               C 535 312, 468 292, 432 275 Z"
+                            fill="url(#roadAsphalt)"
+                            stroke="#241c19"
+                            stroke-width="2.2"
+                            stroke-linejoin="round"
+                          />
+
+                          <!-- 4C. Sunset Sheen & Subtle Tire Track Contours on the Asphalt -->
+                          <path
+                            d="M 429 276
+                               C 458 292, 508 310, 498 336
+                               C 484 366, 320 382, 298 430
+                               C 278 470, 365 504, 415 536"
+                            fill="none"
+                            stroke="#e89454"
+                            stroke-width="1.2"
+                            stroke-opacity="0.32"
+                            stroke-dasharray="14 8 6 10"
+                          />
+                          <path
+                            d="M 431 276
+                               C 464 292, 525 311, 517 340
+                               C 506 372, 348 389, 350 434
+                               C 352 474, 495 498, 575 536"
+                            fill="none"
+                            stroke="#e89454"
+                            stroke-width="1.2"
+                            stroke-opacity="0.28"
+                            stroke-dasharray="18 12 4 8"
+                          />
+
+                          <!-- 4D. Crisp Inner White/Cream Fog Lines (Left & Right Asphalt Edges) -->
+                          <path
+                            d="M 428.5 277
+                               C 456 293, 502 310, 490 335
+                               C 474 365, 310 381, 281 430
+                               C 257 470, 328 505, 365 537"
+                            fill="none"
+                            stroke="#edd6b4"
+                            stroke-width="1.5"
+                            stroke-opacity="0.72"
+                          />
+                          <path
+                            d="M 431.5 277
+                               C 467 293, 533 312, 525 342
+                               C 517 375, 361 392, 370 435
+                               C 380 475, 556 495, 638 537"
+                            fill="none"
+                            stroke="#edd6b4"
+                            stroke-width="1.5"
+                            stroke-opacity="0.72"
+                          />
+
+                          <!-- 4E. Perspective Centerline (Tapered Double/Dashed Amber Highway Stripe) -->
+                          <path
+                            d="M 430 276
+                               C 461.5 292, 517.5 311, 508 338.5
+                               C 502 354, 445 366, 395 384"
+                            fill="none"
+                            stroke="#f3ae4e"
+                            stroke-width="1.6"
+                            stroke-dasharray="5 5"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M 395 384
+                               C 356 398, 330 412, 325 432.5
+                               C 317.5 472.5, 442.5 500, 502.5 538"
+                            fill="none"
+                            stroke="#f5b349"
+                            stroke-width="3.2"
+                            stroke-dasharray="14 11"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M 399 386
+                               C 361 400, 335 414, 330 433.5
+                               C 323 472.5, 449 500, 510 538"
+                            fill="none"
+                            stroke="#e07c3e"
+                            stroke-width="1.4"
+                            stroke-opacity="0.85"
+                            stroke-linecap="round"
+                          />
+
+                          <!-- 4F. Curveside Reflector Posts Along the Left Outer Bend -->
+                          <g stroke="#241c19" stroke-width="1.4">
+                            <rect x="314" y="381" width="3.5" height="12" fill="#d9cbb8" />
+                            <rect x="314" y="383" width="3.5" height="3" fill="#f29748" />
+                            <rect x="282" y="396" width="4" height="15" fill="#d9cbb8" />
+                            <rect x="282" y="398" width="4" height="3.5" fill="#f29748" />
+                            <rect x="259" y="416" width="4.5" height="18" fill="#d9cbb8" />
+                            <rect x="259" y="419" width="4.5" height="4" fill="#f29748" />
+                            <rect x="254" y="442" width="5" height="21" fill="#d9cbb8" />
+                            <rect x="254" y="445" width="5" height="4.5" fill="#e85d3f" />
+                            <rect x="275" y="472" width="5.5" height="24" fill="#d9cbb8" />
+                            <rect x="275" y="476" width="5.5" height="5" fill="#e85d3f" />
+                          </g>
+                        </g>
+
+                        <!-- ================= 4G. CRUISING 1970s CALIFORNIA ROADSTER (CENTERED AT 0,0) ================= -->
+                        <g id="desertConvertible" class="convertible-track" aria-label="1970s California convertible cruising toward the sunset">
+                          <g class="convertible-body">
+                            <!-- 1. Twin Forward-Projecting Warm Headlight Cones -->
+                            <g class="headlight-cones">
+                              <path d="M -21 -25 L -48 -118 L -6 -118 L -11 -25 Z" fill="url(#headlightBeam)" />
+                              <path d="M 11 -25 L 6 -118 L 48 -118 L 21 -25 Z" fill="url(#headlightBeam)" />
+                            </g>
+
+                            <!-- 2. Ground Shadow Ellipse -->
+                            <ellipse cx="0" cy="4" rx="34" ry="11" fill="#140f0f" fill-opacity="0.72" />
+
+                            <!-- 3. Wide Rear Tires with Metallic Hubcap Rims -->
+                            <g stroke="#241c19" stroke-width="1.4">
+                              <!-- Left Rear Tire -->
+                              <rect x="-27.5" y="-4" width="9.5" height="15.5" rx="3" fill="#1b1616" />
+                              <line x1="-25" y1="-2" x2="-25" y2="9" stroke="#3c3230" stroke-width="1" stroke-dasharray="2 2" />
+                              <ellipse cx="-27.5" cy="3.5" rx="1.3" ry="4.2" fill="#d8cbb8" stroke-width="0.9" />
+                              <!-- Right Rear Tire -->
+                              <rect x="18" y="-4" width="9.5" height="15.5" rx="3" fill="#1b1616" />
+                              <line x1="25" y1="-2" x2="25" y2="9" stroke="#3c3230" stroke-width="1" stroke-dasharray="2 2" />
+                              <ellipse cx="27.5" cy="3.5" rx="1.3" ry="4.2" fill="#d8cbb8" stroke-width="0.9" />
+                            </g>
+
+                            <!-- 4. Twin Exhaust Tips & Animated Exhaust Puffs -->
+                            <g>
+                              <rect x="-18.5" y="6.8" width="4.5" height="3.2" rx="1" fill="#cbbba6" stroke="#241c19" stroke-width="1" />
+                              <rect x="14" y="6.8" width="4.5" height="3.2" rx="1" fill="#cbbba6" stroke="#241c19" stroke-width="1" />
+                              <circle class="exhaust-puff-1" cx="-16.2" cy="11.5" r="3.2" fill="#ead5b7" fill-opacity="0.55" />
+                              <circle class="exhaust-puff-2" cx="16.2" cy="11.5" r="3.2" fill="#ead5b7" fill-opacity="0.55" />
+                            </g>
+
+                            <!-- 5. Chrome Windshield Frame with Cyan Glass Glint & Rear-View Mirror -->
+                            <g>
+                              <path d="M -21 -23 L -17.5 -34.5 H 17.5 L 21 -23 Z" fill="#7bc2cc" fill-opacity="0.76" stroke="#ece0cc" stroke-width="2" stroke-linejoin="round" />
+                              <path d="M -21 -23 L -17.5 -34.5 H 17.5 L 21 -23 Z" fill="none" stroke="#241c19" stroke-width="0.9" />
+                              <!-- Cyan Glass Glint -->
+                              <path d="M -13 -32 L -17 -25 M -8 -32 L -11 -26 M 11 -32 L 8 -26" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" opacity="0.82" />
+                              <!-- Center Chrome Rear-View Mirror -->
+                              <rect x="-3.5" y="-31.5" width="7" height="2.4" rx="1" fill="#e8dccb" stroke="#241c19" stroke-width="0.9" />
+                              <line x1="0" y1="-34" x2="0" y2="-31.5" stroke="#241c19" stroke-width="1.1" />
+                              <!-- Side Wing Mirror (Left) -->
+                              <ellipse cx="-23.5" cy="-24" rx="2.6" ry="1.6" fill="#ece0cc" stroke="#241c19" stroke-width="1" />
+                            </g>
+
+                            <!-- 6. Open Leather Cockpit, Twin Headrests & Driver with Windswept Hair -->
+                            <g>
+                              <!-- Dark Saddle Leather Cockpit Tub -->
+                              <path d="M -22 -24 H 22 L 24 -12 H -24 Z" fill="#4f271d" stroke="#241c19" stroke-width="1.5" stroke-linejoin="round" />
+                              <!-- Steering Wheel Top Rim -->
+                              <path d="M -14.5 -22 A 5.5 4.5 0 0 1 -4.5 -22" fill="none" stroke="#241c19" stroke-width="1.6" />
+                              <!-- Bucket Seat Headrests -->
+                              <rect x="-15" y="-21" width="9" height="5.5" rx="2.2" fill="#783b2b" stroke="#241c19" stroke-width="1.2" />
+                              <rect x="6" y="-21" width="9" height="5.5" rx="2.2" fill="#783b2b" stroke="#241c19" stroke-width="1.2" />
+                              <!-- Driver Silhouette with Windswept Hair -->
+                              <path d="M -16 -16 C -15 -20, -5 -20, -4 -16 Z" fill="#241c19" />
+                              <circle cx="-10" cy="-24.5" r="4.8" fill="#241c19" />
+                              <!-- Windswept Hair Locks Blowing in the Evening Breeze -->
+                              <path d="M -7 -28 C -2 -29, 1 -27, 3 -28 M -6 -25.5 C -1 -26.5, 2 -25, 4.5 -25.5 M -7 -23 C -3 -23.5, 0 -22.5, 2 -23" fill="none" stroke="#241c19" stroke-width="1.5" stroke-linecap="round" />
+                            </g>
+
+                            <!-- 7. Cream Folded Soft-Top Boot (Tonneau Cover) -->
+                            <g>
+                              <path d="M -23.5 -14.5 C -12 -16, 12 -16, 23.5 -14.5 L 25 -8.5 C 12 -9.5, -12 -9.5, -25 -8.5 Z" fill="#f3dfc1" stroke="#241c19" stroke-width="1.4" stroke-linejoin="round" />
+                              <!-- Pleat Seams & Chrome Tonneau Snaps -->
+                              <path d="M -14 -14.8 L -15 -8.8 M 0 -15.2 V -9 M 14 -14.8 L 15 -8.8" stroke="#bfa482" stroke-width="1" />
+                              <circle cx="-19" cy="-11.5" r="0.8" fill="#53433b" />
+                              <circle cx="-7" cy="-12" r="0.8" fill="#53433b" />
+                              <circle cx="7" cy="-12" r="0.8" fill="#53433b" />
+                              <circle cx="19" cy="-11.5" r="0.8" fill="#53433b" />
+                            </g>
+
+                            <!-- 8. Sculpted Cherry-Rust Fenders, Tailfins & Recessed Trunk Decklid -->
+                            <g>
+                              <!-- Main Rear Quarter Panels & Flared Canted Tailfins -->
+                              <path
+                                d="M -24 -12
+                                   L -28.5 -3
+                                   L -27.5 4.5
+                                   H 27.5
+                                   L 28.5 -3
+                                   L 24 -12
+                                   C 18 -11, 16 -10, 15 -9.5
+                                   H -15
+                                   C -16 -10, -18 -11, -24 -12 Z"
+                                fill="url(#roadsterBodyGrad)"
+                                stroke="#241c19"
+                                stroke-width="1.6"
+                                stroke-linejoin="round"
+                              />
+                              <!-- Left Sculpted Tailfin Ridge & Sunset Highlight -->
+                              <path d="M -24 -12 L -28 -3 L -22 -2 L -19 -10.5 Z" fill="#d95338" stroke="#241c19" stroke-width="1.2" stroke-linejoin="round" />
+                              <path d="M -23.5 -11.2 L -27.2 -3.2" stroke="#ffcf75" stroke-width="1.5" stroke-linecap="round" />
+                              <!-- Right Sculpted Tailfin Ridge & Sunset Highlight -->
+                              <path d="M 24 -12 L 28 -3 L 22 -2 L 19 -10.5 Z" fill="#d95338" stroke="#241c19" stroke-width="1.2" stroke-linejoin="round" />
+                              <path d="M 23.5 -11.2 L 27.2 -3.2" stroke="#ffcf75" stroke-width="1.5" stroke-linecap="round" />
+
+                              <!-- Recessed Center Trunk Decklid -->
+                              <path d="M -18.5 -9.8 H 18.5 L 20.5 -2.2 H -20.5 Z" fill="#b83b2a" stroke="#241c19" stroke-width="1.3" stroke-linejoin="round" />
+                              <!-- Sunset Sheen & Chrome Trunk Keyhole Emblem -->
+                              <path d="M -16 -8 H 16" stroke="#f7a95e" stroke-width="1.1" stroke-linecap="round" opacity="0.7" />
+                              <circle cx="0" cy="-5.2" r="1.2" fill="#f3e3c6" stroke="#241c19" stroke-width="0.7" />
+                              <path d="M -4.5 -5.2 H 4.5" stroke="#f3e3c6" stroke-width="0.9" stroke-linecap="round" />
+                            </g>
+
+                            <!-- 9. Whip Radio Antenna on Right Rear Fender -->
+                            <g>
+                              <ellipse cx="22.5" cy="-9.5" rx="1.6" ry="1" fill="#e8dccb" stroke="#241c19" stroke-width="0.9" />
+                              <path d="M 22.5 -9.5 Q 25.5 -26 27.5 -43" fill="none" stroke="#dcd0c0" stroke-width="1.1" stroke-linecap="round" />
+                              <circle cx="27.5" cy="-43" r="1.3" fill="#ffdf85" stroke="#241c19" stroke-width="0.7" />
+                            </g>
+
+                            <!-- 10. Recessed Tail Panel with Four Glowing Ruby Taillights -->
+                            <g>
+                              <rect x="-26" y="-2.2" width="52" height="5.8" rx="1.5" fill="#231b1a" stroke="#241c19" stroke-width="1.4" />
+                              <!-- Four Glowing Ruby Taillight Lenses (Dual Left & Dual Right) -->
+                              <g class="taillight-glow" filter="url(#warm-glow)">
+                                <rect x="-23.5" y="-1" width="5.5" height="3.2" rx="1.2" fill="#ff2a1f" stroke="#ffd2a6" stroke-width="0.6" />
+                                <rect x="-16.5" y="-1" width="5.5" height="3.2" rx="1.2" fill="#ff2a1f" stroke="#ffd2a6" stroke-width="0.6" />
+                                <rect x="11" y="-1" width="5.5" height="3.2" rx="1.2" fill="#ff2a1f" stroke="#ffd2a6" stroke-width="0.6" />
+                                <rect x="18" y="-1" width="5.5" height="3.2" rx="1.2" fill="#ff2a1f" stroke="#ffd2a6" stroke-width="0.6" />
+                              </g>
+                            </g>
+
+                            <!-- 11. Full-Width Chrome Rear Bumper, Bumperettes & '76' California License Plate -->
+                            <g>
+                              <!-- Main Chrome Bumper Bar -->
+                              <rect x="-29.5" y="3" width="59" height="4.8" rx="2.2" fill="#e8dccb" stroke="#241c19" stroke-width="1.5" />
+                              <!-- Chrome Specular Horizon Reflection Line -->
+                              <line x1="-27" y1="4.4" x2="27" y2="4.4" stroke="#ffffff" stroke-width="1.1" stroke-linecap="round" />
+                              <line x1="-27" y1="6.3" x2="27" y2="6.3" stroke="#8c7365" stroke-width="1" stroke-linecap="round" />
+
+                              <!-- Center '76' California License Plate -->
+                              <rect x="-6.8" y="0.8" width="13.6" height="6.8" rx="1" fill="#f5be49" stroke="#241c19" stroke-width="1.2" />
+                              <text x="0" y="6.2" text-anchor="middle" font-family="monospace" font-weight="700" font-size="5.6" fill="#241c19">76</text>
+
+                              <!-- Vertical Chrome & Rubber Bumperettes -->
+                              <rect x="-11.5" y="1.8" width="3.2" height="6.8" rx="1.2" fill="#dcd0c0" stroke="#241c19" stroke-width="1.1" />
+                              <rect x="-10.9" y="3.2" width="2" height="4" rx="0.6" fill="#241c19" />
+                              <rect x="8.3" y="1.8" width="3.2" height="6.8" rx="1.2" fill="#dcd0c0" stroke="#241c19" stroke-width="1.1" />
+                              <rect x="8.9" y="3.2" width="2" height="4" rx="0.6" fill="#241c19" />
+                            </g>
+                          </g>
+                        </g>
+
+                        <!-- ================= 5. RECEDING UTILITY POLES & TELEGRAPH WIRES ================= -->
+                        <g filter="url(#ink-drawn)">
+                          <!-- Sagging Catenary Wires Connecting the 5 Perspective Poles -->
+                          <g fill="none" stroke="#241c19" stroke-width="1.1" opacity="0.78">
+                            <path d="M 438 275 Q 488 286 527 282 Q 528 312 487 308 Q 418 335 352 316 Q 272 346 218 316 Q 178 360 155 330" />
+                            <path d="M 442 275 Q 494 288 537 282 Q 538 314 501 308 Q 434 337 372 316 Q 296 348 246 316 Q 204 362 185 330" />
+                          </g>
+
+                          <!-- Pole 5 (Horizon Distance, Right Bend) -->
+                          <g stroke="#241c19" stroke-width="1.4" stroke-linecap="round">
+                            <line x1="532" y1="278" x2="532" y2="306" />
+                            <line x1="526" y1="282" x2="538" y2="282" />
+                          </g>
+
+                          <!-- Pole 4 (Upper-Mid Bend) -->
+                          <g stroke="#241c19" stroke-width="1.8" stroke-linecap="round">
+                            <line x1="494" y1="302" x2="494" y2="342" />
+                            <line x1="485" y1="308" x2="503" y2="308" />
+                            <line x1="488" y1="313" x2="500" y2="313" />
+                          </g>
+
+                          <!-- Pole 3 (Midground Crossover) -->
+                          <g stroke="#241c19" stroke-width="2.2" stroke-linecap="round">
+                            <line x1="362" y1="308" x2="362" y2="368" />
+                            <line x1="350" y1="316" x2="374" y2="316" />
+                            <line x1="354" y1="323" x2="370" y2="323" />
+                            <path d="M 357 316 L 362 322 L 367 316" fill="none" stroke-width="1.2" />
+                          </g>
+
+                          <!-- Pole 2 (Mid-Left Bend) -->
+                          <g stroke="#241c19" stroke-width="2.8" stroke-linecap="round">
+                            <line x1="232" y1="305" x2="232" y2="404" />
+                            <line x1="215" y1="316" x2="249" y2="316" />
+                            <line x1="220" y1="326" x2="244" y2="326" />
+                            <path d="M 224 316 L 232 325 L 240 316" fill="none" stroke-width="1.4" />
+                            <line x1="218" y1="313" x2="218" y2="316" stroke-width="1.8" />
+                            <line x1="246" y1="313" x2="246" y2="316" stroke-width="1.8" />
+                          </g>
+
+                          <!-- Pole 1 (Foreground Left) -->
+                          <g stroke="#241c19" stroke-width="3.6" stroke-linecap="round">
+                            <line x1="170" y1="316" x2="170" y2="458" />
+                            <line x1="169" y1="318" x2="169" y2="456" stroke="#b87348" stroke-width="1.2" />
+                            <line x1="149" y1="330" x2="191" y2="330" />
+                            <line x1="154" y1="343" x2="186" y2="343" />
+                            <path d="M 159 330 L 170 342 L 181 330" fill="none" stroke-width="1.6" />
+                            <line x1="153" y1="326" x2="153" y2="330" stroke-width="2" />
+                            <line x1="187" y1="326" x2="187" y2="330" stroke-width="2" />
+                          </g>
+                        </g>
+
+                        <!-- ================= 6. ROADSIDE SIGNAGE, MOTEL & DESERT FLORA ================= -->
+                        <!-- California Fan Palms Silhouetted Along the Ridge -->
+                        <g filter="url(#ink-drawn)" stroke="#241c19" fill="none">
+                          <path d="M 102 352 Q 96 312 106 276" stroke-width="2.6" stroke-linecap="round" />
+                          <g fill="#241c19" stroke-width="1">
+                            <path d="M 106 276 Q 90 270 84 280 Q 95 276 106 276 Z" />
+                            <path d="M 106 276 Q 92 260 100 256 Q 104 265 106 276 Z" />
+                            <path d="M 106 276 Q 116 258 124 264 Q 114 268 106 276 Z" />
+                            <path d="M 106 276 Q 124 270 128 280 Q 116 276 106 276 Z" />
+                            <path d="M 106 276 Q 96 282 92 290 Q 101 283 106 276 Z" />
+                          </g>
+
+                          <path d="M 126 358 Q 132 325 128 296" stroke-width="2.1" stroke-linecap="round" />
+                          <g fill="#241c19" stroke-width="1">
+                            <path d="M 128 296 Q 114 291 110 299 Q 120 296 128 296 Z" />
+                            <path d="M 128 296 Q 122 282 130 282 Q 130 289 128 296 Z" />
+                            <path d="M 128 296 Q 142 288 145 296 Q 136 295 128 296 Z" />
+                          </g>
+                        </g>
+
+                        <!-- Saguaro Cacti & Desert Scrub -->
+                        <g filter="url(#ink-drawn)" fill="#2b2321" stroke="#241c19" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M 592 385 V 332 C 592 328, 598 328, 598 332 V 385 Z" />
+                          <path d="M 592 356 H 582 C 578 356, 578 352, 578 348 V 338 C 578 335, 583 335, 583 338 V 350 H 592" />
+                          <path d="M 598 348 H 607 C 611 348, 611 344, 611 340 V 326 C 611 323, 606 323, 606 326 V 342 H 598" />
+
+                          <path d="M 294 338 V 308 C 294 306, 298 306, 298 308 V 338 Z" />
+                          <path d="M 294 324 H 288 V 314" fill="none" stroke-width="2.4" />
+                          <path d="M 298 320 H 304 V 310" fill="none" stroke-width="2.4" />
+
+                          <path d="M 188 476 Q 198 462 216 466 Q 228 458 242 472 L 246 480 H 184 Z" fill="#5e372c" />
+                          <path d="M 196 472 L 206 478 M 222 468 L 230 476" stroke="#241c19" stroke-width="1.1" />
+                          <path d="M 556 446 Q 566 435 582 438 Q 594 432 605 446 Z" fill="#5e372c" />
+                          <path d="M 488 418 L 482 410 M 488 418 L 488 408 M 488 418 L 495 411" fill="none" />
+                          <path d="M 235 446 L 228 438 M 235 446 L 236 436 M 235 446 L 242 439" fill="none" />
+                        </g>
+
+                        <!-- Tilted Roadside Highway Shield ("HWY 76") on the Right Shoulder -->
+                        <g filter="url(#ink-drawn)" transform="translate(524, 426) rotate(5)">
+                          <line x1="18" y1="28" x2="18" y2="54" stroke="#241c19" stroke-width="3" />
+                          <path d="M 2 4 L 18 0 L 34 4 L 31 28 L 18 33 L 5 28 Z" fill="#f3e3c6" stroke="#241c19" stroke-width="1.8" stroke-linejoin="round" />
+                          <path d="M 5 8 H 31" stroke="#b85338" stroke-width="2" />
+                          <text x="18" y="23" text-anchor="middle" font-family="monospace" font-weight="700" font-size="11" fill="#241c19">76</text>
+                        </g>
+
+                        <!-- Interactive Retro Roadside Googie Motel Sign (#mirageSign) -->
+                        <g
+                          id="mirageSign"
+                          class="interactive-svg-node"
+                          tabindex="0"
+                          role="button"
+                          aria-label="Roadside Mirage motel neon sign. Click or press Enter to cycle marquee message."
+                          filter="url(#ink-drawn)"
+                          transform="translate(646, 266)"
+                        >
+                          <!-- Keyboard Focus Ring Halo -->
+                          <rect class="focus-halo" x="0" y="2" width="122" height="120" rx="8" fill="none" stroke="#ffdf85" stroke-width="2" stroke-dasharray="5 4" />
+
+                          <!-- Twin Steel Support Legs -->
+                          <line x1="42" y1="108" x2="42" y2="192" stroke="#241c19" stroke-width="3.5" />
+                          <line x1="78" y1="108" x2="78" y2="192" stroke="#241c19" stroke-width="3.5" />
+                          <line x1="42" y1="138" x2="78" y2="152" stroke="#241c19" stroke-width="1.8" />
+                          <line x1="78" y1="138" x2="42" y2="152" stroke="#241c19" stroke-width="1.8" />
+
+                          <!-- Ground Mound at Sign Base -->
+                          <path d="M 22 192 Q 60 180 98 192 Z" fill="#4f2d27" stroke="#241c19" stroke-width="1.6" />
+
+                          <!-- Top Neon Starburst -->
+                          <g class="neon-sign-glow sign-starburst" filter="url(#warm-glow)">
+                            <line x1="60" y1="6" x2="60" y2="34" stroke="#ffdf85" stroke-width="2" />
+                            <line x1="46" y1="20" x2="74" y2="20" stroke="#ffdf85" stroke-width="2" />
+                            <line x1="51" y1="11" x2="69" y2="29" stroke="#ffdf85" stroke-width="1.4" />
+                            <line x1="69" y1="11" x2="51" y2="29" stroke="#ffdf85" stroke-width="1.4" />
+                            <circle cx="60" cy="20" r="3.5" fill="#fff6d6" />
+                          </g>
+
+                          <!-- Googie Boomerang Roof Accent -->
+                          <path d="M 8 52 L 60 32 L 116 48 L 108 56 L 60 41 L 14 58 Z" fill="#dc853d" stroke="#241c19" stroke-width="1.8" stroke-linejoin="round" />
+
+                          <!-- Main Sign Cabinet -->
+                          <path d="M 14 54 L 108 49 L 102 88 L 18 91 Z" fill="#2a2022" stroke="#241c19" stroke-width="2.2" stroke-linejoin="round" />
+                          <path d="M 18 58 L 104 53 L 99 84 L 21 87 Z" fill="none" stroke="#f3be69" stroke-width="1.2" class="neon-sign-glow sign-cabinet-border" />
+
+                          <!-- Neon Sign Lettering (Cycled via JS) -->
+                          <text id="motelMainText" x="61" y="75" text-anchor="middle" font-family="monospace" font-weight="700" font-size="14" letter-spacing="2" fill="#ffdf85" class="neon-sign-glow sign-main-text">MIRAGE</text>
+
+                          <!-- Red Arrow Motif Piercing the Sign -->
+                          <path d="M 2 98 L 114 92 L 106 86 M 114 92 L 107 99" fill="none" stroke="#d95338" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+
+                          <!-- Lower Sub-Marquee -->
+                          <rect x="24" y="96" width="72" height="17" rx="2" fill="#f3e3c6" stroke="#241c19" stroke-width="1.8" />
+                          <text id="motelSubText" x="60" y="108" text-anchor="middle" font-family="monospace" font-weight="700" font-size="7.2" letter-spacing="0.6" fill="#241c19">VACANCY • INN</text>
+                        </g>
+
+                        <!-- ================= 7. FOREGROUND WOODEN WINDOW SILL & RETRO DESK ================= -->
+                        <g filter="url(#ink-drawn)">
+                          <!-- Window Sill Ledge & Warm Wood Surface -->
+                          <path d="M 24 522 H 836 V 576 H 24 Z" fill="#704532" stroke="#241c19" stroke-width="2.4" />
+                          <path d="M 24 522 H 836 V 533 H 24 Z" fill="#8c583e" stroke="#241c19" stroke-width="2" />
+                          <!-- Wood Grain Ink Lines -->
+                          <path d="M 48 548 H 190 M 245 556 H 460 M 510 546 H 680 M 715 558 H 815" stroke="#472a1e" stroke-width="1.3" stroke-linecap="round" />
+
+                          <!-- 7A. Interactive Vintage All-In-One Compact Computer (#retroComputer) -->
+                          <g
+                            id="retroComputer"
+                            class="interactive-svg-node"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Vintage computer terminal. Click or press Enter to cycle through 4 nostalgic terminal screens."
+                            transform="translate(58, 376)"
+                          >
+                            <!-- Keyboard Focus Ring Halo -->
+                            <rect class="focus-halo" x="6" y="2" width="178" height="172" rx="10" fill="none" stroke="#ffdf85" stroke-width="2" stroke-dasharray="5 4" />
+
+                            <!-- Desk Cast Shadow -->
+                            <ellipse cx="96" cy="158" rx="88" ry="10" fill="#241c19" fill-opacity="0.38" />
+
+                            <!-- Side Housing Depth (3D Left Side Panel) -->
+                            <path d="M 12 18 L 28 8 L 28 134 L 12 142 Z" fill="#cbb698" stroke="#241c19" stroke-width="2.2" stroke-linejoin="round" />
+                            <!-- Side Cooling Vent Louvers -->
+                            <path d="M 16 32 L 24 27 M 16 39 L 24 34 M 16 46 L 24 41 M 16 53 L 24 48 M 16 60 L 24 55" stroke="#241c19" stroke-width="1.4" stroke-linecap="round" />
+
+                            <!-- Main Front Beige Monitor Chassis -->
+                            <rect x="28" y="8" width="128" height="128" rx="8" fill="#e8d8be" stroke="#241c19" stroke-width="2.4" />
+                            <!-- Recessed Lower Chin -->
+                            <path d="M 28 112 H 156 V 138 C 156 141, 153 144, 150 144 H 34 C 31 144, 28 141, 28 138 Z" fill="#d8c5a7" stroke="#241c19" stroke-width="2.2" />
+
+                            <!-- Deep Inset CRT Bezel -->
+                            <rect x="40" y="20" width="104" height="76" rx="6" fill="#3a322e" stroke="#241c19" stroke-width="2" />
+                            <!-- Phosphor CRT Glass Screen -->
+                            <rect class="crt-glass" x="45" y="25" width="94" height="66" rx="5" fill="#1d241e" stroke="#241c19" stroke-width="1.6" />
+
+                            <!-- Subtle CRT Scanlines -->
+                            <path d="M 47 35 H 137 M 47 45 H 137 M 47 55 H 137 M 47 65 H 137 M 47 75 H 137 M 47 85 H 137" stroke="#f0b65b" stroke-opacity="0.09" stroke-width="1" />
+
+                            <!-- Interactive Terminal Prompt Text on Screen -->
+                            <text id="crtLine1" x="51" y="43" font-family="monospace" font-size="8.2" font-weight="700" fill="#f5b349">&gt; mishrasoham</text>
+                            <text id="crtLine2" x="51" y="56" font-family="monospace" font-size="7.8" fill="#e09f5a">  .com // v1.0</text>
+                            <text id="crtLine3" x="51" y="72" font-family="monospace" font-size="7.8" fill="#a3c193">&gt; status: warm</text>
+                            <rect id="crtCursor" x="121" y="64" width="5.2" height="9" fill="#f5b349" class="crt-cursor" />
+
+                            <!-- 3.5" Floppy Drive Slot & Retro Badge -->
+                            <rect x="98" y="102" width="44" height="4.5" rx="1.5" fill="#241c19" />
+                            <rect x="132" y="100" width="8" height="2.5" fill="#b85338" />
+                            <rect x="42" y="101" width="10" height="6" rx="1" fill="#dc853d" stroke="#241c19" stroke-width="1.1" />
+                            <!-- Power Indicator LED -->
+                            <circle class="power-led" cx="144" cy="126" r="2.5" fill="#7bcfb0" stroke="#241c19" stroke-width="1" />
+
+                            <!-- Coiled Keyboard Cord -->
+                            <path d="M 38 142 C 26 148, 22 156, 34 156 C 42 156, 36 164, 48 162" fill="none" stroke="#241c19" stroke-width="2.2" stroke-linecap="round" />
+
+                            <!-- Mechanical Keyboard in Foreground (Taps on click/keypress) -->
+                            <g class="keyboard-group">
+                              <path d="M 44 146 L 166 146 L 178 164 L 34 164 Z" fill="#e8d8be" stroke="#241c19" stroke-width="2.2" stroke-linejoin="round" />
+                              <path d="M 34 164 H 178 V 169 H 34 Z" fill="#cbb698" stroke="#241c19" stroke-width="1.8" stroke-linejoin="round" />
+                              <path d="M 48 151 H 160 M 44 156 H 165 M 41 161 H 170" stroke="#241c19" stroke-width="2" stroke-dasharray="6 3" />
+                            </g>
+                          </g>
+
+                          <!-- 7B. Steaming Ceramic Coffee Mug Next to the Terminal -->
+                          <g transform="translate(254, 488)">
+                            <ellipse cx="22" cy="48" rx="22" ry="5" fill="#241c19" fill-opacity="0.32" />
+                            <path d="M 36 14 C 48 14, 48 36, 36 36" fill="none" stroke="#241c19" stroke-width="4.5" />
+                            <path d="M 36 14 C 46 14, 46 36, 36 36" fill="none" stroke="#d96b43" stroke-width="2.2" />
+                            <rect x="6" y="8" width="32" height="38" rx="5" fill="#f3e3c6" stroke="#241c19" stroke-width="2.2" />
+                            <rect x="7" y="20" width="30" height="5" fill="#b85338" />
+                            <rect x="7" y="27" width="30" height="4" fill="#dc853d" />
+                            <ellipse cx="22" cy="8" rx="16" ry="3.5" fill="#4a2c20" stroke="#241c19" stroke-width="1.8" />
+                            <path class="steam-1" d="M 17 2 C 13 -6, 23 -12, 18 -20" fill="none" stroke="#f7e3c4" stroke-width="1.8" stroke-linecap="round" />
+                            <path class="steam-2" d="M 27 0 C 31 -8, 21 -14, 26 -22" fill="none" stroke="#f7e3c4" stroke-width="1.8" stroke-linecap="round" />
+                          </g>
+
+                          <!-- 7C. Potted Desert Cactus & Field Notes Stack on Right Corner of Sill -->
+                          <g transform="translate(708, 462)">
+                            <rect x="-78" y="60" width="66" height="11" rx="2" fill="#4c5847" stroke="#241c19" stroke-width="1.8" />
+                            <rect x="-74" y="63" width="60" height="5" fill="#f3e3c6" />
+                            <rect x="-72" y="50" width="58" height="10" rx="2" fill="#b85338" stroke="#241c19" stroke-width="1.8" />
+                            <rect x="-68" y="53" width="52" height="4" fill="#f3e3c6" />
+
+                            <ellipse cx="32" cy="74" rx="24" ry="5" fill="#241c19" fill-opacity="0.32" />
+                            <path d="M 16 26 C 16 6, 48 6, 48 26 Z" fill="#4c6b50" stroke="#241c19" stroke-width="2" />
+                            <path d="M 24 12 Q 22 20 24 26 M 32 9 V 26 M 40 12 Q 42 20 40 26" stroke="#241c19" stroke-width="1.2" fill="none" />
+                            <circle cx="32" cy="8" r="3.5" fill="#f29748" stroke="#241c19" stroke-width="1.2" />
+                            <path d="M 12 34 L 52 34 L 46 72 L 18 72 Z" fill="#c86446" stroke="#241c19" stroke-width="2" stroke-linejoin="round" />
+                            <rect x="9" y="26" width="46" height="9" rx="2" fill="#d97554" stroke="#241c19" stroke-width="2" />
+                          </g>
+                        </g>
+
+                        <!-- Inner Double-Ruled Vintage Print Frame -->
+                        <rect x="24" y="20" width="812" height="556" rx="10" fill="none" stroke="#241c19" stroke-width="3" />
+                        <rect x="30" y="26" width="800" height="544" rx="7" fill="none" stroke="#f3e3c6" stroke-opacity="0.35" stroke-width="1" />
+                      </g>
+                    </svg>
+
+                    <div class="window-caption">
+                      <span class="caption-lyric">“Such a lovely place, such a lovely face...”</span>
+                      <span class="caption-hint">TIP: CLICK TERMINAL OR MOTEL SIGN</span>
+                    </div>
+                  </div>
+                </div>
+      </section>
+
+      <!-- SECONDARY SECTION: A LITTLE ABOUT THIS PLACE -->
+      <section class="secondary-section" aria-labelledby="about-heading">
+        <div class="about-note">
+          <h2 class="section-heading" id="about-heading">A little about this place</h2>
+          <p>
+            This is my own small corner of the internet — part workshop, part rest stop. I've only just moved in, and the rooms are still mostly empty. In time, this is where I'll keep the things I build, write, and think about.
+          </p>
+        </div>
+
+        <aside class="signposts" aria-label="Future sections">
+          <p class="signposts-title">Signposts</p>
+          <ul class="signpost-list">
+            <li class="signpost-item">
+              <span class="signpost-name">Projects</span>
+              <span class="signpost-status">coming eventually</span>
+            </li>
+            <li class="signpost-item">
+              <span class="signpost-name">Notes</span>
+              <span class="signpost-status">little by little</span>
+            </li>
+            <li class="signpost-item">
+              <span class="signpost-name">Resume</span>
+              <span class="signpost-status">someday soon</span>
+            </li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Made with curiosity, somewhere on the internet. · © <span id="currentYear">2026</span> Soham Mishra</p>
+      <span class="footer-domain">mishrasoham.com</span>
+    </footer>
+  </div>
+
+  <script>
+    // Dynamic year in footer
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    
+      // Theme Atmosphere Toggle (Dusk Sunset <-> Midnight Drive)
+      var toggleBtn = document.getElementById("themeToggle");
+      var themeIcon = document.getElementById("themeIcon");
+      var themeLabel = document.getElementById("themeLabel");
+      var root = document.documentElement;
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", function () {
+          var current = root.getAttribute("data-theme") || "sunset";
+          var next = current === "sunset" ? "midnight" : "sunset";
+          root.setAttribute("data-theme", next);
+
+          if (next === "midnight") {
+            themeIcon.textContent = "☾";
+            themeLabel.textContent = "Midnight Drive";
+          } else {
+            themeIcon.textContent = "☀";
+            themeLabel.textContent = "Dusk Sunset";
+          }
+        });
+      }
+
+      // Subtle click-to-play / pause vinyl widget
+    (function () {
+      const btn = document.getElementById("vinylPlayerBtn");
+      const audio = document.getElementById("hotelCaliforniaAudio");
+      const statusText = document.getElementById("musicStatusText");
+
+      if (!btn || !audio) return;
+
+      function syncUI(isPlaying) {
+        btn.classList.toggle("is-playing", isPlaying);
+        btn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+        if (statusText) {
+          statusText.textContent = isPlaying ? "Now playing" : "Currently listening to";
+        }
+      }
+
+      btn.addEventListener("click", function () {
+        if (audio.paused) {
+          audio.play().then(function () {
+            syncUI(true);
+          }).catch(function () {
+            syncUI(false);
+          });
+        } else {
+          audio.pause();
+          syncUI(false);
+        }
+      });
+
+      audio.addEventListener("ended", function () {
+        syncUI(false);
+      });
+
+      audio.addEventListener("pause", function () {
+        syncUI(false);
+      });
+
+      audio.addEventListener("play", function () {
+        syncUI(true);
+      });
+
+    // 3. Interactive Vintage Computer Terminal (#retroComputer)
+          var computerEl = document.getElementById("retroComputer");
+          var crtLine1 = document.getElementById("crtLine1");
+          var crtLine2 = document.getElementById("crtLine2");
+          var crtLine3 = document.getElementById("crtLine3");
+          var crtCursor = document.getElementById("crtCursor");
+    
+          var terminalScreens = [
+            {
+              l1: "> mishrasoham",
+              l2: "  .com // v1.0",
+              l3: "> status: warm",
+              cursorX: "121"
+            },
+            {
+              l1: "> ping hwy76",
+              l2: "  64K RAM OK",
+              l3: "> 14ms // clear",
+              cursorX: "125"
+            },
+            {
+              l1: "> play track_01",
+              l2: "  Hotel Calif.",
+              l3: "> colitas: warm",
+              cursorX: "125"
+            },
+            {
+              l1: "> sky_watch.sh",
+              l2: "  stars: clear",
+              l3: "> coffee: 88%",
+              cursorX: "116"
+            }
+          ];
+          var screenIdx = 0;
+    
+          function cycleTerminalScreen() {
+            screenIdx = (screenIdx + 1) % terminalScreens.length;
+            var nextScreen = terminalScreens[screenIdx];
+            if (crtLine1 && crtLine2 && crtLine3) {
+              crtLine1.textContent = nextScreen.l1;
+              crtLine2.textContent = nextScreen.l2;
+              crtLine3.textContent = nextScreen.l3;
+            }
+            if (crtCursor) {
+              crtCursor.setAttribute("x", nextScreen.cursorX);
+            }
+            if (computerEl) {
+              computerEl.classList.remove("is-tapping");
+              void computerEl.offsetWidth;
+              computerEl.classList.add("is-tapping");
+              setTimeout(function () {
+                computerEl.classList.remove("is-tapping");
+              }, 150);
+            }
+          }
+    
+          if (computerEl) {
+            computerEl.addEventListener("click", cycleTerminalScreen);
+            computerEl.addEventListener("keydown", function (e) {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                cycleTerminalScreen();
+              }
+            });
+          }
+    
+          // 4. Interactive Roadside Googie Motel Sign (#mirageSign)
+          var mirageSignEl = document.getElementById("mirageSign");
+          var motelMainText = document.getElementById("motelMainText");
+          var motelSubText = document.getElementById("motelSubText");
+    
+          var marqueeStates = [
+            { main: "MIRAGE", size: "14", spacing: "2", sub: "VACANCY • INN" },
+            { main: "CALIFORNIA", size: "10.5", spacing: "0.8", sub: "ANY TIME OF YR" },
+            { main: "NO VACANCY", size: "10.5", spacing: "1", sub: "LATE CHECK-IN" }
+          ];
+          var marqueeIdx = 0;
+    
+          function cycleMotelMarquee() {
+            marqueeIdx = (marqueeIdx + 1) % marqueeStates.length;
+            var state = marqueeStates[marqueeIdx];
+            if (motelMainText && motelSubText) {
+              motelMainText.textContent = state.main;
+              motelMainText.setAttribute("font-size", state.size);
+              motelMainText.setAttribute("letter-spacing", state.spacing);
+              motelSubText.textContent = state.sub;
+            }
+            if (mirageSignEl) {
+              mirageSignEl.classList.remove("is-switching");
+              void mirageSignEl.offsetWidth;
+              mirageSignEl.classList.add("is-switching");
+            }
+          }
+    
+          if (mirageSignEl) {
+            mirageSignEl.addEventListener("click", cycleMotelMarquee);
+            mirageSignEl.addEventListener("keydown", function (e) {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                cycleMotelMarquee();
+              }
+            });
+          }
+    
+          // 5. Smoothly slow down the convertible on hover using Web Animations API
+          var convertibleEl = document.getElementById("desertConvertible");
+          if (convertibleEl && typeof convertibleEl.getAnimations === "function") {
+            convertibleEl.addEventListener("mouseenter", function () {
+              var anims = convertibleEl.getAnimations();
+              for (var i = 0; i < anims.length; i++) {
+                if (typeof anims[i].updatePlaybackRate === "function") {
+                  anims[i].updatePlaybackRate(0.22);
+                }
+              }
+            });
+            convertibleEl.addEventListener("mouseleave", function () {
+              var anims = convertibleEl.getAnimations();
+              for (var i = 0; i < anims.length; i++) {
+                if (typeof anims[i].updatePlaybackRate === "function") {
+                  anims[i].updatePlaybackRate(1);
+                }
+              }
+            });
+          }
+    })();
+  </script>
+</body>
+</html>
