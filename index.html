@@ -801,6 +801,16 @@
       font-family: var(--font-mono);
       font-size: 0.78rem;
       color: var(--ink-secondary);
+      text-decoration: none;
+      cursor: inherit;
+      transition: color 0.45s ease;
+    }
+
+    .footer-domain:hover,
+    .footer-domain:focus {
+      text-decoration: none;
+      color: var(--ink-secondary);
+      outline: none;
     }
 
     /* RESPONSIVE BREAKPOINTS */
@@ -1696,7 +1706,7 @@
     <!-- FOOTER -->
     <footer class="site-footer">
       <p>Made with curiosity, somewhere on the internet. · © <span id="currentYear">2026</span> Soham Mishra</p>
-      <span class="footer-domain">mishrasoham.com</span>
+      <a href="/surprise" class="footer-domain" id="footerDomainLink">mishrasoham.com</a>
     </footer>
   </div>
 
@@ -1704,28 +1714,47 @@
     // Dynamic year in footer
     document.getElementById("currentYear").textContent = new Date().getFullYear();
 
-    
-      // Theme Atmosphere Toggle (Dusk Sunset <-> Midnight Drive)
+    // Theme Atmosphere Toggle (Dusk Sunset <-> Midnight Drive) with persistence
+    (function () {
       var toggleBtn = document.getElementById("themeToggle");
       var themeIcon = document.getElementById("themeIcon");
       var themeLabel = document.getElementById("themeLabel");
       var root = document.documentElement;
 
+      var savedTheme = localStorage.getItem("site-theme") || "sunset";
+      applyTheme(savedTheme);
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        localStorage.setItem("site-theme", theme);
+        if (theme === "midnight") {
+          themeIcon.textContent = "☾";
+          themeLabel.textContent = "Midnight Drive";
+        } else {
+          themeIcon.textContent = "☀";
+          themeLabel.textContent = "Dusk Sunset";
+        }
+      }
+
       if (toggleBtn) {
         toggleBtn.addEventListener("click", function () {
           var current = root.getAttribute("data-theme") || "sunset";
           var next = current === "sunset" ? "midnight" : "sunset";
-          root.setAttribute("data-theme", next);
+          applyTheme(next);
+        });
+      }
 
-          if (next === "midnight") {
-            themeIcon.textContent = "☾";
-            themeLabel.textContent = "Midnight Drive";
-          } else {
-            themeIcon.textContent = "☀";
-            themeLabel.textContent = "Dusk Sunset";
+      // Local testing fallback: allows smooth navigation locally without 404, while using /surprise on production
+      var footerLink = document.getElementById("footerDomainLink");
+      if (footerLink && (window.location.protocol === "file:" || window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")) {
+        footerLink.addEventListener("click", function (e) {
+          if (window.location.hostname.indexOf("mishrasoham.com") === -1 && window.location.port !== "8787") {
+            e.preventDefault();
+            window.location.href = "surprise.html";
           }
         });
       }
+    })();
 
       // Subtle click-to-play / pause vinyl widget
     (function () {
