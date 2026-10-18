@@ -1,10 +1,13 @@
+
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "mishrasoham",
-  "compatibility_date": "2024-09-23",
+  "name": "tp",
+  "compatibility_date": "2026-10-18",
+  "observability": {
+    "enabled": true
+  },
   "assets": {
     "directory": ".",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "404-page"
   }
 }

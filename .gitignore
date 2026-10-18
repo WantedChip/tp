@@ -1,0 +1,4 @@
+scratchpad/
+.playwright-mcp/
+node_modules/
+.wrangler/
